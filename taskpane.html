@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Little Fu — Excel Helper</title>
+
+  <!-- Office JS -->
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+  <link rel="stylesheet" href="taskpane.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- Header -->
+    <header id="header">
+      <div id="header-left">
+        <img src="icons/icon-32.png" alt="Little Fu" id="header-icon" />
+        <div>
+          <div id="header-title">Little Fu</div>
+          <div id="header-subtitle">Your Excel helper</div>
+        </div>
+      </div>
+      <button id="settings-btn" title="Settings" aria-label="Settings">⚙️</button>
+    </header>
+
+    <!-- Settings panel (hidden by default) -->
+    <section id="settings-panel" class="hidden">
+      <label for="api-key-input">OpenRouter API Key</label>
+      <input type="password" id="api-key-input" placeholder="sk-or-v1-..." autocomplete="off" />
+
+      <label for="model-select">Model</label>
+      <select id="model-select">
+        <option value="openai/gpt-4o-mini">openai/gpt-4o-mini (fast, cheap)</option>
+        <option value="anthropic/claude-3.5-haiku">anthropic/claude-3.5-haiku</option>
+        <option value="google/gemini-2.0-flash-001">google/gemini-2.0-flash-001</option>
+        <option value="meta-llama/llama-3.1-8b-instruct:free">meta-llama/llama-3.1-8b-instruct (free)</option>
+      </select>
+
+      <div id="settings-actions">
+        <button id="save-settings-btn" class="primary-btn">Save</button>
+        <button id="close-settings-btn" class="secondary-btn">Close</button>
+      </div>
+
+      <p class="settings-hint">
+        Get a free API key at <span class="link-text">openrouter.ai/keys</span>.
+        Your key is stored only on this computer (browser local storage) and is never sent anywhere except OpenRouter.
+      </p>
+    </section>
+
+    <!-- Chat messages -->
+    <main id="chat-window">
+      <div id="chat-messages">
+        <div class="message assistant">
+          <div class="bubble">
+            Hi! I'm <b>Little Fu</b> 🦊 — I only talk about Excel, but I'm great at it.
+            Ask me things like <i>"how do I remove duplicates"</i> or <i>"how do I make a dropdown list"</i>,
+            and I'll walk you through it step by step.
+            <br /><br />
+            First time here? Tap ⚙️ above and add your OpenRouter API key to get started.
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Input row -->
+    <footer id="input-row">
+      <textarea id="chat-input" placeholder="Ask Little Fu about Excel..." rows="1"></textarea>
+      <button id="send-btn" title="Send" aria-label="Send">➤</button>
+    </footer>
+
+  </div>
+
+  <script type="text/javascript" src="taskpane.js"></script>
+</body>
+</html>
